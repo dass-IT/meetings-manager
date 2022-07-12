@@ -79,33 +79,33 @@ def set_meeting_to_notified(db, meeting_id):
 
 def remove_old_meetings(db):
     c = db.cursor()
-    c.execute("SELECT * FROM meetings WHERE date(beginn/1000,'unixepoch','localtime') < date('now')")
+    c.execute("SELECT * FROM meetings WHERE date(start/1000,'unixepoch','localtime') < date('now')")
     for r in c.fetchall():
         # print r
         meeting_id=r[0]
         c.execute("DELETE FROM meetings WHERE id=?", (meeting_id,))
-        c.execute("DELETE FROM teilnehmer WHERE external=1 AND id IN (SELECT teilnehmer_id FROM meeting_teilnehmer WHERE meeting_id=?)", (meeting_id,))
-        c.execute("UPDATE teilnehmer SET active=0 WHERE external=0 AND id IN (SELECT organisator_id FROM meetings WHERE id=?)", (meeting_id,))
-        c.execute("DELETE FROM meeting_teilnehmer WHERE meeting_id=?", (meeting_id,))
+        c.execute("DELETE FROM participant WHERE external=1 AND id IN (SELECT participant_id FROM meeting_participant WHERE meeting_id=?)", (meeting_id,))
+        c.execute("UPDATE participant SET active=0 WHERE external=0 AND id IN (SELECT organizer_id FROM meetings WHERE id=?)", (meeting_id,))
+        c.execute("DELETE FROM meeting_participant WHERE meeting_id=?", (meeting_id,))
        
         db.commit()
 
 
 def remove_old_external_teilnehmer(db):
     c = db.cursor()
-    c.execute("DELETE FROM teilnehmer WHERE external=1 AND id NOT IN (SELECT teilnehmer_id FROM meeting_teilnehmer)")
+    c.execute("DELETE FROM participant WHERE external=1 AND id NOT IN (SELECT participant_id FROM meeting_participant)")
     db.commit()
 
 
 def deactivate_old_organisator(db):
     c = db.cursor()
-    c.execute("UPDATE teilnehmer SET active=0 WHERE active=1 AND permanent=0 AND id NOT IN (SELECT organisator_id FROM meetings)")
+    c.execute("UPDATE participant SET active=0 WHERE active=1 AND permanent=0 AND id NOT IN (SELECT organizer_id FROM meetings)")
     db.commit()
 
 
 def process_unsent_meetings(db):
     c = db.cursor()
-    c.execute("SELECT id, name, beginn, ende, organisator_id, resource, url, password, notified FROM meetings WHERE notified=0")
+    c.execute("SELECT id, name, start, end, organizer_id, resource, url, password, notified FROM meetings WHERE notified=0")
     for r in c.fetchall():
         meeting_id, name, beginn, ende, organisator_id, resource, url, password, notified = r
         datum = datetime.date.fromtimestamp(beginn / 1000).strftime("%d.%m.%Y")
@@ -162,7 +162,7 @@ def process_unsent_meetings(db):
 
 def get_todays_meetings(db):
     c = db.cursor()
-    c.execute("SELECT id, name, beginn, ende, organisator_id, resource, url, password, notified FROM meetings WHERE date(beginn/1000,'unixepoch','localtime') = date('now')")
+    c.execute("SELECT id, name, start, end, organizer_id, resource, url, password, notified FROM meetings WHERE date(beginn/1000,'unixepoch','localtime') = date('now')")
     for r in c.fetchall():
         meeting_id, name, beginn, ende, organisator_id, resource, url, password, notified = r
         dt_beginn = datetime.datetime.fromtimestamp(beginn / 1000, tz)
@@ -175,7 +175,7 @@ def get_todays_meetings(db):
 
 def get_teilnehmer_by_id(db, t_id):
     c = db.cursor()
-    c.execute("SELECT uid, email, permanent, external, password FROM teilnehmer WHERE id=?", (t_id,))
+    c.execute("SELECT uid, email, permanent, external, password FROM participant WHERE id=?", (t_id,))
     uid, email, permanent, external, password = c.fetchone()
     return (uid, email, permanent, external, password)
     
@@ -183,7 +183,7 @@ def get_teilnehmer_by_id(db, t_id):
 def get_meeting_teilnehmer(db, meeting_id):
     #print "get_meeting_teilnehmer", meeting_id
     c = db.cursor()
-    c.execute("SELECT uid, email, permanent, external FROM teilnehmer WHERE id IN (SELECT teilnehmer_id FROM meeting_teilnehmer WHERE meeting_id=?)", (meeting_id,))
+    c.execute("SELECT uid, email, permanent, external FROM participant WHERE id IN (SELECT participant_id FROM meeting_participant WHERE meeting_id=?)", (meeting_id,))
     result = c.fetchall()
     #for row in result:
     #   print row
@@ -191,7 +191,7 @@ def get_meeting_teilnehmer(db, meeting_id):
 
 def get_all_meetings(db):
     c = db.cursor()
-    c.execute("SELECT id, name, beginn, ende, organisator_id, resource, url, password, notified FROM meetings")
+    c.execute("SELECT id, name, start, end, organizer_id, resource, url, password, notified FROM meetings")
     for r in c.fetchall():
         meeting_id, name, beginn, ende, organisator_id, resource, url, password, notified = r
         dt_beginn = datetime.datetime.fromtimestamp(beginn / 1000, tz)

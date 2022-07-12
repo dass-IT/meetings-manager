@@ -56,6 +56,8 @@ public class MeetingView extends VerticalLayout {
         toolbar.add(filterText, addButton);
         
         grid.setColumns("name", "datum", "organizerId", "room", "resource");
+        grid.getColumnByKey("name").setResizable(true);
+        grid.getColumnByKey("organizerId").setResizable(true);
         grid.getColumnByKey("room").setHeader("Raum");
         grid.asSingleSelect().addValueChangeListener(event ->
             meetingForm.showMeeting(grid.asSingleSelect().getValue()));
