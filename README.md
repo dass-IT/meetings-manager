@@ -1,4 +1,4 @@
-Meetings-Manager
+Meetings-Manager for Jitsi Meet
 ================
 Meetings-Manager ist eine minimalistische Webapplikation zur Organisation von Meetings mit einem Videokonferenzsystem wie Jitsi Meet.
 
@@ -15,6 +15,8 @@ Die Webapplikation besteht aus einer Java-Servlet-Applikation, die unter Tomcat 
  Python-Skripten, die Mails verschicken und Aufräumarbeiten erledigen. Standardmäßig wird eine SQLite-Datenbank
  für die Datenhaltung verwendet.
 
+
+Meetings-Manager wurde entwickelt von: dass IT GmbH www.dass-it.de
 
 Bauen der Applikation
 ---------------------
@@ -62,22 +64,28 @@ Bedienung
 Es wird zwischen internen und externen Benutzern unterschieden. Interne Benutzer werden aus einer vorhandenen Quelle importiert
 (z.B. aus einem LDAP-Verzeichnis) und in der SQLite-Datenbank abgelegt.
 
-Externe Benutzer werden entweder beim Erstellen eines Meetings als externe Teilnehmer angelegt oder explizit in der Benutzeransicht.
+Externe Benutzer werden entweder beim Erstellen eines Meetings als externe Teilnehmer angelegt oder explizit in der Benutzeransicht erstellt.
 
 Übersicht
 ---------
 Eine Kalenderansicht, in der vorhandene Meetings angezeigt werden. Dient nur der Übersicht, Bearbeiten oder Neuanlage von
 Meetings ist nicht möglich.
 
+![Kalenderansicht](images/Meetings-Manager-overview.png)
+
 Besprechungen
 -------------
-Hier werden Vorhandene Meetings angezeigt, neue können angelegt werden. Über den Button "Teilnehmer hinzufügen" können interne Teilnehmer aus einer Liste ausgewählt werden. Im selben Dialogfeld können externe Teilnehmer durch Eingabe der E-Mail-Adresse hinzugefügt werden.
+Hier werden vorhandene Meetings angezeigt, neue können angelegt werden. Über den Button "Teilnehmer hinzufügen" können interne Teilnehmer aus einer Liste ausgewählt werden. Im selben Dialogfeld können externe Teilnehmer durch Eingabe der E-Mail-Adresse hinzugefügt werden.
 
 Beim Anlegen eines Meetings kann die URL leer gelassen werden. Dann wird eine URL automatisch erzeugt, die den Namen und einen zufälligen String enthält.
 
 Werden vorhandene Meetings bearbeitet, wird keine neue Mail verschickt. Ist das gewünscht, muss das Meeting gelöscht und neu angelegt werden.
 
+![Kalenderansicht](images/Meetings-Manager-Meetings.png)
+
+Die Felder "Raum" und "Ressource" dienen nur zur Information, es findet keine Kontrolle auf doppelte Belegung etc statt.
 Benutzer
 --------
 Externe Benutzer werden hier verwaltet. Außerdem werden interne Benutzer angezeigt, die als Organisator ein anstehendes Meeting haben. Durch setzen der Checkbox "Dauerhaft" wird verhindert, dass Benutzer gesperrt/gelöscht werden, wenn kein Meeting mehr ansteht. Diese Benutzer können dann dauerhaft mit den konfigurierten Zugangsdaten Meetings starten.
 
+![Kalenderansicht](images/Meetings-Manager-Users.png)
