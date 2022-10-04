@@ -64,7 +64,7 @@ Bedienung
 Es wird zwischen internen und externen Benutzern unterschieden. Interne Benutzer werden aus einer vorhandenen Quelle importiert
 (z.B. aus einem LDAP-Verzeichnis) und in der SQLite-Datenbank abgelegt.
 
-Externe Benutzer werden entweder beim Erstellen eines Meetings als externe Teilnehmer angelegt oder explizit in der Benutzeransicht.
+Externe Benutzer werden entweder beim Erstellen eines Meetings als externe Teilnehmer angelegt oder explizit in der Benutzeransicht erstellt.
 
 Übersicht
 ---------
@@ -83,6 +83,7 @@ Werden vorhandene Meetings bearbeitet, wird keine neue Mail verschickt. Ist das 
 
 ![Kalenderansicht](images/Meetings-Manager-Meetings.png)
 
+Die Felder "Raum" und "Ressource" dienen nur zur Information, es findet keine Kontrolle auf doppelte Belegung etc statt.
 Benutzer
 --------
 Externe Benutzer werden hier verwaltet. Außerdem werden interne Benutzer angezeigt, die als Organisator ein anstehendes Meeting haben. Durch setzen der Checkbox "Dauerhaft" wird verhindert, dass Benutzer gesperrt/gelöscht werden, wenn kein Meeting mehr ansteht. Diese Benutzer können dann dauerhaft mit den konfigurierten Zugangsdaten Meetings starten.
