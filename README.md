@@ -16,6 +16,8 @@ Die Webapplikation besteht aus einer Java-Servlet-Applikation, die unter Tomcat 
  für die Datenhaltung verwendet.
 
 
+Meetings-Manager wurde entwickelt von: dass IT GmbH www.dass-it.de
+
 Bauen der Applikation
 ---------------------
 Voraussetzungen:
@@ -69,15 +71,20 @@ Externe Benutzer werden entweder beim Erstellen eines Meetings als externe Teiln
 Eine Kalenderansicht, in der vorhandene Meetings angezeigt werden. Dient nur der Übersicht, Bearbeiten oder Neuanlage von
 Meetings ist nicht möglich.
 
+![Kalenderansicht](images/Meetings-Manager-overview.png)
+
 Besprechungen
 -------------
-Hier werden Vorhandene Meetings angezeigt, neue können angelegt werden. Über den Button "Teilnehmer hinzufügen" können interne Teilnehmer aus einer Liste ausgewählt werden. Im selben Dialogfeld können externe Teilnehmer durch Eingabe der E-Mail-Adresse hinzugefügt werden.
+Hier werden vorhandene Meetings angezeigt, neue können angelegt werden. Über den Button "Teilnehmer hinzufügen" können interne Teilnehmer aus einer Liste ausgewählt werden. Im selben Dialogfeld können externe Teilnehmer durch Eingabe der E-Mail-Adresse hinzugefügt werden.
 
 Beim Anlegen eines Meetings kann die URL leer gelassen werden. Dann wird eine URL automatisch erzeugt, die den Namen und einen zufälligen String enthält.
 
 Werden vorhandene Meetings bearbeitet, wird keine neue Mail verschickt. Ist das gewünscht, muss das Meeting gelöscht und neu angelegt werden.
 
+![Kalenderansicht](images/Meetings-Manager-Meetings.png)
+
 Benutzer
 --------
 Externe Benutzer werden hier verwaltet. Außerdem werden interne Benutzer angezeigt, die als Organisator ein anstehendes Meeting haben. Durch setzen der Checkbox "Dauerhaft" wird verhindert, dass Benutzer gesperrt/gelöscht werden, wenn kein Meeting mehr ansteht. Diese Benutzer können dann dauerhaft mit den konfigurierten Zugangsdaten Meetings starten.
 
+![Kalenderansicht](images/Meetings-Manager-Users.png)
