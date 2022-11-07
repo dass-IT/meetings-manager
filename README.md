@@ -59,6 +59,7 @@ Skripte zur Jitsi-Anbindung
 ---------------------------
   * meetingsdb.py: Sollte per cron jede Minute aufgerufen werden mit dem Parameter "mail". Dadurch werden Mails für anstehende Meetings verschickt. Sollte unter dem Benutzer ausgeführt werden, der Schreibzugriff auf die SQLite-Datenbank hat. Zusätzlich sollte *meetingsdb.py* einmal am Tag mit dem Parameter "clean" aufgerufen werden. Dabei werden vergangene Meetings und nicht mehr benötigte externe Teilnehmer entfernt.
   * syncusers.sh: Erzeugt Benutzer in Jitsi. Sollte mindestens einmal täglich aufgerufen werden. Benutzer werden erzeugt, wenn ein Meeting am selben Tag geplant ist. Benutzer ohne anstehende Meetings werden gelöscht.
+
 Bedienung
 ---------
 Es wird zwischen internen und externen Benutzern unterschieden. Interne Benutzer werden aus einer vorhandenen Quelle importiert
