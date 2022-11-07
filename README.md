@@ -80,10 +80,10 @@ Hier werden vorhandene Meetings angezeigt, neue können angelegt werden. Über d
 Beim Anlegen eines Meetings kann die URL leer gelassen werden. Dann wird eine URL automatisch erzeugt, die den Namen und einen zufälligen String enthält.
 
 Werden vorhandene Meetings bearbeitet, wird keine neue Mail verschickt. Ist das gewünscht, muss das Meeting gelöscht und neu angelegt werden.
+Die Felder "Raum" und "Ressource" dienen nur zur Information, es findet keine Kontrolle auf doppelte Belegung etc statt.
 
 ![Kalenderansicht](images/Meetings-Manager-Meetings.png)
 
-Die Felder "Raum" und "Ressource" dienen nur zur Information, es findet keine Kontrolle auf doppelte Belegung etc statt.
 Benutzer
 --------
 Externe Benutzer werden hier verwaltet. Außerdem werden interne Benutzer angezeigt, die als Organisator ein anstehendes Meeting haben. Durch setzen der Checkbox "Dauerhaft" wird verhindert, dass Benutzer gesperrt/gelöscht werden, wenn kein Meeting mehr ansteht. Diese Benutzer können dann dauerhaft mit den konfigurierten Zugangsdaten Meetings starten.
